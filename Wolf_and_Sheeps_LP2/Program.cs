@@ -6,7 +6,14 @@ namespace Wolf_and_Sheeps_LP2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            UserInterface user = new UserInterface();
+            PiecesMovement piecesMovement = new PiecesMovement();
+
+            
+            piecesMovement.InitialPositions();
+           
+            
+           
         }
     }
 }
