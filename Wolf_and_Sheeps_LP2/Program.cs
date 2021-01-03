@@ -2,18 +2,34 @@
 
 namespace Wolf_and_Sheeps_LP2
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Program
     {
+        GameLoop gameLoop;
         static void Main(string[] args)
         {
-            UserInterface user = new UserInterface();
-            PiecesMovement piecesMovement = new PiecesMovement();
+            Program p;
+            p = new Program();
+            p.Run();
+        }
 
-            
-            piecesMovement.InitialPositions();
-           
-            
-           
+        /// <summary>
+        /// Program Constructor
+        /// </summary>
+        private Program()
+        {
+            gameLoop = new GameLoop();
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Run()
+        {
+            gameLoop.Start();
         }
     }
 }

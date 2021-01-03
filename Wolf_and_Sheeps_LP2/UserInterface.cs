@@ -1,4 +1,5 @@
 using System;
+
 namespace Wolf_and_Sheeps_LP2
 {
     /// <summary>
@@ -10,14 +11,6 @@ namespace Wolf_and_Sheeps_LP2
         /// <summary>
         /// Variables
         /// </summary>
-        
-        /// <summary>
-        /// Board Dimension
-        /// </summary>
-        private const int Dimension = 8;
-
-        /// Board array
-        public char[,] board{get; set;}
 
 
         /// <summary>
@@ -30,46 +23,39 @@ namespace Wolf_and_Sheeps_LP2
         private string verticalSymbol;
 
         /// <summary>
-        /// User Interface Constructor
+        /// User Interface constructor 
         /// </summary>
-        public UserInterface(){
-            board = new char[Dimension, Dimension];
-            horizontalSymbol = "+---";
-            verticalSymbol = "| ";
+
+        public UserInterface()
+        {
+            horizontalSymbol = "----";
+            verticalSymbol = "|";
         }
 
         /// <summary>
         /// Displays the board 
         /// </summary>
-        public void DisplayBoard(){
-            System.Console.WriteLine("   0   1    2    3   4   5   6   7");
 
-            for(int lines = 0; lines < Dimension; lines++){
-                System.Console.Write("  ");
-                for(int columns = 0; columns < Dimension; columns++)
+        public void DisplayBoard(char[,] board)
+        {
+            System.Console.WriteLine("   0   1   2   3   4   5   6   7");
+
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int k = 0; k < board.GetLength(0); k++)
+                {
+                    if (k == 0) System.Console.Write("   ");
                     System.Console.Write(horizontalSymbol);
-
-                System.Console.Write("+\n");
-
-                for(int columns = 0; columns < Dimension; columns++){
-                    if(columns == 0){
-                        System.Console.Write("  ");
-                         
-                    }
-                    System.Console.Write(verticalSymbol + board[lines,columns] 
-                                + (char) Pieces.Empty);
-                    
-
                 }
-                System.Console.Write("|\n");
-                                            
+                System.Console.Write("\n" + i.ToString() + " ");
+                for (int j = 0; j < board.GetLength(1); j++)
+                {
+                    System.Console.Write(verticalSymbol + " " +
+                        board[i, j] + " ");
+                }
+                Console.Write(verticalSymbol);
+                Console.WriteLine("");
             }
-            System.Console.Write("  ");
-
-            for(int columns = 0; columns < Dimension; columns++)
-                System.Console.Write(horizontalSymbol);
-
-            System.Console.Write("+\n\n");
         }
         /*
         public void ReadWolfPosition(string position){
@@ -79,16 +65,18 @@ namespace Wolf_and_Sheeps_LP2
         /// <summary>
         /// A Print that say to choose the wolf initial postion
         /// </summary>
-        public void WolfPositonPrint(){
+        public void WolfPositonPrint()
+        {
             System.Console.WriteLine("Choose the wolf initial position.\n");
         }
         /// <summary>
         /// A print that says invalid position if the player insert's a invalid
         /// position
         /// </summary>
-        public void InvalidPositionPrint(){
+        public void InvalidPositionPrint()
+        {
             System.Console.WriteLine("Invalid Position.");
             System.Console.WriteLine("Choose between 1, 3, 5, 7.\n");
-        }        
+        }
     }
 }
