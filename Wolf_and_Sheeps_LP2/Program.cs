@@ -3,9 +3,9 @@
 namespace Wolf_and_Sheeps_LP2
 {
     /// <summary>
-    /// 
+    /// Program class. Run the game.
     /// </summary>
-    class Program
+    sealed class Program 
     {
         GameLoop gameLoop;
         static void Main(string[] args)
@@ -16,7 +16,7 @@ namespace Wolf_and_Sheeps_LP2
         }
 
         /// <summary>
-        /// Program Constructor
+        /// Program Constructor.
         /// </summary>
         private Program()
         {
@@ -24,7 +24,7 @@ namespace Wolf_and_Sheeps_LP2
         }
 
         /// <summary>
-        /// 
+        /// Start's the Game.
         /// </summary>
         private void Run()
         {

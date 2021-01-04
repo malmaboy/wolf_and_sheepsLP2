@@ -10,9 +10,9 @@
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.#ctor">
-             <summary>
-            
-             </summary>
+            <summary>
+            Board constructor.
+            </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.InitialWolfPosition">
             <summary>
@@ -111,8 +111,10 @@
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.DisplayBoard(Wolf_and_Sheeps_LP2.Board,System.ConsoleColor)">
             <summary>
-            Displays the board 
+            
             </summary>
+            <param name="board"></param>
+            <param name="color"></param>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.WolfPositonPrint">
             <summary>
@@ -122,7 +124,33 @@
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.InvalidPositionPrint">
             <summary>
             A print that says invalid position if the player insert's a invalid
-            position
+            position.
+            </summary>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.ReadInput">
+            <summary>
+            Reads the input of the user.
+            </summary>
+            <returns>input</returns>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.InvalidPositionSheep">
+            <summary>
+            Print that says invalid position for the sheeps.
+            </summary>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.WolfVictory">
+            <summary>
+            Print that says the victory for the wolf.
+            </summary>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.SheepVictory">
+            <summary>
+            Print that says the victory for the sheeps.
+            </summary>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.MainMenu">
+            <summary>
+            Prints the main menu.
             </summary>
         </member>
     </members>

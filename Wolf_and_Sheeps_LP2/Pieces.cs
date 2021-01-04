@@ -1,16 +1,23 @@
 namespace Wolf_and_Sheeps_LP2
 {
     /// <summary>
-    /// The Pieces that are placed on the board
+    /// The Pieces that are placed on the board.
     /// </summary>
     public enum Pieces
     {
-        /// Wolf 'X'
+        /// <summary>
+        /// Wolf 'X'.
+        /// </summary>
         X = 'X',
-        /// Sheep 'O'
+
+        /// <summary>
+        /// Sheep 'O'.
+        /// </summary>
         O = 'O',
 
-        ///Empty ' '
+        /// <summary>
+        /// Empty ' '.
+        /// </summary>
         Empty = ' '
     }
 }

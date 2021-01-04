@@ -3,20 +3,44 @@ using System;
 namespace Wolf_and_Sheeps_LP2
 {
     /// <summary>
-    /// 
+    /// Board class, contains game info.
     /// </summary>
     public class Board
     {
+        /// <summary>
+        /// Board dimension.
+        /// </summary>
         private const int Dimension = 8;
-        public Pieces Turn { get; private set; }
-        public ConsoleColor TurnColor { get; private set; }
-        private char[,] board;
-        private int[] wolfPos;
-
-        private UserInterface userInterface;
 
         /// <summary>
-        ///
+        /// User Interface instance, used to print on console.
+        /// </summary>
+        private readonly UserInterface userInterface;
+
+        /// <summary>
+        /// Gets player's turn.
+        /// </summary>
+        /// <value>Current player's turn.</value>
+        public Pieces Turn { get; private set; }
+
+        /// <summary>
+        /// Gets player's turn color.
+        /// </summary>
+        /// /// <value>Player turn color.</value>
+        public ConsoleColor TurnColor { get; private set; }
+
+        /// <summary>
+        /// Board array, stores positions.
+        /// </summary>
+        private readonly char[,] board;
+
+        /// <summary>
+        /// Stores wolf position.
+        /// </summary>
+        private int[] wolfPos;
+
+        /// <summary>
+        /// Board constructor.
         /// </summary>
         public Board()
         {
@@ -27,19 +51,22 @@ namespace Wolf_and_Sheeps_LP2
             board = new char[Dimension, Dimension];
 
             for (int i = 0; i < Dimension; i++)
+            {
                 for (int j = 0; j < Dimension; j++)
+                {
                     board[i, j] = (char)Pieces.Empty;
+                }
+            }
 
             userInterface = new UserInterface();
         }
 
         /// <summary>
         /// Wolf initial position
-        /// and choice for initial position
+        /// and choice for initial position.
         /// </summary>
         public void InitialWolfPosition()
         {
-
             while (true)
             {
                 try
@@ -55,16 +82,17 @@ namespace Wolf_and_Sheeps_LP2
                 }
             }
 
-            /// <summary>
-            /// Sheeps Initial positions
-            /// </summary>
-            /// <returns></returns>
             board[7, 0] = (char)Pieces.O;
             board[7, 2] = (char)Pieces.O;
             board[7, 4] = (char)Pieces.O;
             board[7, 6] = (char)Pieces.O;
         }
 
+        /// <summary>
+        /// Method that moves the wolf, if possible.
+        /// </summary>
+        /// <param name="x">Line to move to.</param>
+        /// <param name="y">Column to move to.</param>
         public void MoveWolf(int x, int y)
         {
             if (x >= 0 && x <= 7 && y >= 0 && y <= 7 &&
@@ -80,12 +108,23 @@ namespace Wolf_and_Sheeps_LP2
                     TurnColor = ConsoleColor.Cyan;
                 }
                 else
+                {
                     System.Console.WriteLine("There is a piece in that place.");
+                }
             }
             else
+            {
                 System.Console.WriteLine("Invalid position to move to.");
+            }
         }
 
+        /// <summary>
+        /// Method that moves the Sheep if possible.
+        /// </summary>
+        /// <param name="x">Sheep's line.</param>
+        /// <param name="y">Sheep's column.</param>
+        /// <param name="i">Line to move to.</param>
+        /// <param name="j">Column to move to.</param>
         public void MoveSheep(int x, int y, int i, int j)
         {
             if (x >= 0 && x <= 7 && y >= 0 && y <= 7 &&
@@ -101,36 +140,35 @@ namespace Wolf_and_Sheeps_LP2
                     TurnColor = ConsoleColor.White;
                 }
                 else
+                {
                     System.Console.WriteLine("The Sheep can't move there.");
+                }
             }
             else
+            {
                 System.Console.WriteLine("Invalid Input.");
+            }
         }
 
-
         /// <summary>
-        /// 
+        /// Checks if the given position is empty.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
+        /// <param name="x">Line to check.</param>
+        /// <param name="y">Column to check.</param>
+        /// <returns>True if empty, false if ocuppied.</returns>
         private bool IsEmpty(int x, int y)
         {
-            if (board[x, y] == (char)Pieces.Empty)
-                return true;
-            else
-                return false;
+            return board[x, y] == (char)Pieces.Empty;
         }
 
         /// <summary>
         /// Checks constantly the game victory condition.
-        /// /// </summary>
+        /// </summary>
         public void GameCheck()
         {
             if (wolfPos[0] == 7)
             {
                 userInterface.WolfVictory();
-
             }
             else
             {
@@ -139,24 +177,30 @@ namespace Wolf_and_Sheeps_LP2
                     for (int j = -1; j <= 1; j += 2)
                     {
                         if (wolfPos[0] + i >= 0 && wolfPos[0] + i <= 7 &&
-                        wolfPos[1] + j >= 0 && wolfPos[1] + j <= 7)
+                        wolfPos[1] + j >= 0 && wolfPos[1] + j <= 7 &&
+                        board[wolfPos[0] + i, wolfPos[1] + j] == (char)Pieces.Empty)
                         {
-                            if (board[wolfPos[0] + i, wolfPos[1] + j] == (char)Pieces.Empty)
-                                return;
+                            return;
                         }
                     }
                 }
-                userInterface.SheepVictory();
 
+                userInterface.SheepVictory();
             }
         }
 
+        /// <summary>
+        /// Returns the board.
+        /// </summary>
+        /// <returns>Game board.</returns>
+        public char[,] GetBoard() => board;
 
         /// <summary>
-        /// 
+        /// Gets the board's given position.
         /// </summary>
-        /// <returns></returns>
-        public char[,] GetBoard() => board;
-        public char GetPos(int x, int y) => board[x,y];
+        /// <param name="x">Line.</param>
+        /// <param name="y">Column.</param>
+        /// <returns>X, O or Empty.</returns>
+        public char GetPos(int x, int y) => board[x, y];
     }
 }
