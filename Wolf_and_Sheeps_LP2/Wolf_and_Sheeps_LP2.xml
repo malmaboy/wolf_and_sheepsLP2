@@ -6,7 +6,39 @@
     <members>
         <member name="T:Wolf_and_Sheeps_LP2.Board">
             <summary>
-            
+            Board class, contains game info.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Board.Dimension">
+            <summary>
+            Board dimension.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Board.userInterface">
+            <summary>
+            User Interface instance, used to print on console.
+            </summary>
+        </member>
+        <member name="P:Wolf_and_Sheeps_LP2.Board.Turn">
+            <summary>
+            Gets player's turn.
+            </summary>
+            <value>Current player's turn.</value>
+        </member>
+        <member name="P:Wolf_and_Sheeps_LP2.Board.TurnColor">
+            <summary>
+            Gets player's turn color.
+            </summary>
+            /// <value>Player turn color.</value>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Board.board">
+            <summary>
+            Board array, stores positions.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Board.wolfPos">
+            <summary>
+            Stores wolf position.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.#ctor">
@@ -17,121 +49,171 @@
         <member name="M:Wolf_and_Sheeps_LP2.Board.InitialWolfPosition">
             <summary>
             Wolf initial position
-            and choice for initial position
+            and choice for initial position.
             </summary>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.Board.MoveWolf(System.Int32,System.Int32)">
+            <summary>
+            Method that moves the wolf, if possible.
+            </summary>
+            <param name="x">Line to move to.</param>
+            <param name="y">Column to move to.</param>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.Board.MoveSheep(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Method that moves the Sheep if possible.
+            </summary>
+            <param name="x">Sheep's line.</param>
+            <param name="y">Sheep's column.</param>
+            <param name="i">Line to move to.</param>
+            <param name="j">Column to move to.</param>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.IsEmpty(System.Int32,System.Int32)">
             <summary>
-            
+            Checks if the given position is empty.
             </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <returns></returns>
+            <param name="x">Line to check.</param>
+            <param name="y">Column to check.</param>
+            <returns>True if empty, false if ocuppied.</returns>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.GameCheck">
             <summary>
             Checks constantly the game victory condition.
-            /// </summary>
+            </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.GetBoard">
             <summary>
-            
+            Returns the board.
             </summary>
-            <returns></returns>
+            <returns>Game board.</returns>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.Board.GetPos(System.Int32,System.Int32)">
+            <summary>
+            Gets the board's given position.
+            </summary>
+            <param name="x">Line.</param>
+            <param name="y">Column.</param>
+            <returns>X, O or Empty.</returns>
         </member>
         <member name="T:Wolf_and_Sheeps_LP2.GameLoop">
             <summary>
-            GameLoop Class
+            GameLoop Class.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.GameLoop.userInterface">
+            <summary>
+            instance of Userinterface.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.GameLoop.gameBoard">
+            <summary>
+            instance of Board.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.GameLoop.#ctor">
             <summary>
-            
+            GameLoop Consctructor.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.GameLoop.Start">
             <summary>
-            
-              </summary>
+            Game Start.
+            </summary>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.GameLoop.Loop">
+            <summary>
+            The game loop.
+            </summary>
         </member>
         <member name="T:Wolf_and_Sheeps_LP2.Pieces">
             <summary>
-            The Pieces that are placed on the board
+            The Pieces that are placed on the board.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Pieces.Empty">
+            <summary>
+            Empty ' '.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Pieces.O">
+            <summary>
+            Sheep 'O'.
             </summary>
         </member>
         <member name="F:Wolf_and_Sheeps_LP2.Pieces.X">
-            Wolf 'X'
-        </member>
-        <member name="F:Wolf_and_Sheeps_LP2.Pieces.O">
-            Sheep 'O'
-        </member>
-        <member name="F:Wolf_and_Sheeps_LP2.Pieces.Empty">
-            Empty ' '
+            <summary>
+            Wolf 'X'.
+            </summary>
         </member>
         <member name="T:Wolf_and_Sheeps_LP2.Program">
             <summary>
-            
+            Program class. Run the game.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.Program.gameLoop">
+            <summary>
+            Gameloop instance to run the game.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Program.#ctor">
             <summary>
-            Program Constructor
+            Program Constructor.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Program.Run">
             <summary>
-            
+            Start's the Game.
             </summary>
         </member>
         <member name="T:Wolf_and_Sheeps_LP2.UserInterface">
             <summary>
             User Interface
-            Error Handling
-            </summary>
-        </member>
-        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.input">
-            <summary>
-            Variables
-            </summary>
-        </member>
-        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.horizontalSymbol">
-            <summary>
-            Horizontal Symbol for board creation
+            Error Handling.
             </summary>
         </member>
         <member name="F:Wolf_and_Sheeps_LP2.UserInterface.verticalSymbol">
             <summary>
-            Vertical Symbol for board creation
+            Vertical Symbol for board creation.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.horizontalSymbol">
+            <summary>
+            Horizontal Symbol for board creation.
+            </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.input">
+            <summary>
+            Variables.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.#ctor">
             <summary>
-            User Interface constructor 
-            /// </summary>
+            User Interface constructor.
+            </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.DisplayBoard(Wolf_and_Sheeps_LP2.Board,System.ConsoleColor)">
             <summary>
-            
+            Display's the board on the console.
             </summary>
-            <param name="board"></param>
-            <param name="color"></param>
+            <param name="board">the board.</param>
+            <param name="color">A color that means a invalid position.</param>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.WolfPositonPrint">
             <summary>
-            A Print that say to choose the wolf initial postion
+            A Print that say to choose the wolf initial position.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.InvalidPositionPrint">
             <summary>
             A print that says invalid position if the player insert's a invalid
-            position.
+            /// /// position.
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.ReadInput">
             <summary>
             Reads the input of the user.
             </summary>
-            <returns>input</returns>
+            <returns>User Input.</returns>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.InvalidPositionSheep">
             <summary>

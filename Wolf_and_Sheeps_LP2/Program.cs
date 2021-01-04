@@ -5,10 +5,13 @@ namespace Wolf_and_Sheeps_LP2
     /// <summary>
     /// Program class. Run the game.
     /// </summary>
-    sealed class Program 
+    public sealed class Program 
     {
-        GameLoop gameLoop;
-        static void Main(string[] args)
+        /// <summary>
+        /// Gameloop instance to run the game.
+        /// </summary>
+        private readonly GameLoop gameLoop;
+        private static void Main()
         {
             Program p;
             p = new Program();

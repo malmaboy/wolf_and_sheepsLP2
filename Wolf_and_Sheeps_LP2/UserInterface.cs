@@ -4,29 +4,28 @@ namespace Wolf_and_Sheeps_LP2
 {
     /// <summary>
     /// User Interface
-    /// Error Handling
+    /// Error Handling.
     /// </summary>
     public class UserInterface
     {
         /// <summary>
-        /// Variables
+        /// Vertical Symbol for board creation.
         /// </summary>
-        string input;
-
+        private readonly string verticalSymbol;
 
         /// <summary>
-        /// Horizontal Symbol for board creation
+        /// Horizontal Symbol for board creation.
         /// </summary>
-        private string horizontalSymbol;
-        /// <summary>
-        /// Vertical Symbol for board creation
-        /// </summary>
-        private string verticalSymbol;
+        private readonly string horizontalSymbol;
 
         /// <summary>
-        /// User Interface constructor 
-        /// /// </summary>
+        /// Variables.
+        /// </summary>
+        private string input;
 
+        /// <summary>
+        /// User Interface constructor.
+        /// </summary>
         public UserInterface()
         {
             horizontalSymbol = "----";
@@ -34,10 +33,10 @@ namespace Wolf_and_Sheeps_LP2
         }
 
         /// <summary>
-        /// 
+        /// Display's the board on the console.
         /// </summary>
-        /// <param name="board"></param>
-        /// <param name="color"></param>
+        /// <param name="board">the board.</param>
+        /// <param name="color">A color that means a invalid position.</param>
         public void DisplayBoard(Board board, ConsoleColor color)
         {
             bool lower = false;
@@ -56,9 +55,14 @@ namespace Wolf_and_Sheeps_LP2
                 {
                     for (int k = 0; k < board.GetBoard().GetLength(0); k++)
                     {
-                        if (k == 0) System.Console.Write("   ");
+                        if (k == 0)
+                        {
+                            System.Console.Write("   ");
+                        }
+
                         System.Console.Write(horizontalSymbol);
                     }
+
                     System.Console.Write("\n" + i.ToString() + " ");
                     for (int j = 0; j < board.GetBoard().GetLength(1); j++)
                     {
@@ -73,56 +77,66 @@ namespace Wolf_and_Sheeps_LP2
                             Console.Write(" " + board.GetPos(i, j).ToString().ToLower() + " ");
                         }
                         else
+                        {
                             Console.Write(" " + board.GetPos(i, j) + " ");
+                        }
                     }
+
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.Write(verticalSymbol);
                     Console.WriteLine(string.Empty);
                 }
-                Console.WriteLine($"\nINPUT: {input}");
+
+                Console.Write($"\nINPUT: {input}");
                 Thread.Sleep(1000);
             }
         }
-        
+
         /// <summary>
-        /// A Print that say to choose the wolf initial postion
+        /// A Print that say to choose the wolf initial position.
         /// </summary>
         public void WolfPositonPrint()
         {
-            System.Console.WriteLine("Choose the wolf initial position.\n");
+            System.Console.WriteLine("Choose the wolf initial position. [1] [3] [5] [7]\n");
         }
 
         /// <summary>
         /// A print that says invalid position if the player insert's a invalid
-        /// position.
+        /// /// /// position.
         /// </summary>
         public void InvalidPositionPrint()
         {
-            System.Console.WriteLine("Invalid Position.");
-            System.Console.WriteLine("Choose between 1, 3, 5, 7.\n");
+            Console.WriteLine("Invalid Position.");
+            Console.WriteLine("Choose between 1, 3, 5, 7.\n");
         }
-
 
         /// <summary>
         /// Reads the input of the user.
         /// </summary>
-        /// <returns>input</returns>
+        /// <returns>User Input.</returns>
         public string ReadInput()
         {
             ConsoleKeyInfo key;
-            input = "";
+            input = string.Empty;
             while (true)
             {
                 key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Enter)
                 {
-                    System.Console.WriteLine(input);
+                    Console.WriteLine(input);
                     return input;
                 }
                 else if (key.Key == ConsoleKey.Backspace)
-                    input = input.Remove(input.Length - 1);
+                {
+                    if (input.Length > 0)
+                    {
+                        input = input.Remove(input.Length - 1);
+                    }
+                }
                 else
-                    input += key.KeyChar.ToString();
+                {
+                    input = string.Concat(input, key.KeyChar.ToString());
+                }
             }
         }
 
@@ -131,7 +145,7 @@ namespace Wolf_and_Sheeps_LP2
         /// </summary>
         public void InvalidPositionSheep()
         {
-            System.Console.WriteLine("\nThe Sheep can't move there.");
+            Console.WriteLine("\nThe Sheep can't move there.");
         }
 
         /// <summary>
@@ -139,7 +153,7 @@ namespace Wolf_and_Sheeps_LP2
         /// </summary>
         public void WolfVictory()
         {
-            System.Console.WriteLine("\nWolf won the game!\n");
+            Console.WriteLine("\nWolf won the game!\n");
             Environment.Exit(0);
         }
 
@@ -148,7 +162,7 @@ namespace Wolf_and_Sheeps_LP2
         /// </summary>
         public void SheepVictory()
         {
-            System.Console.WriteLine("\nSheep's won the game!\n");
+            Console.WriteLine("\nSheep's won the game!\n");
             Environment.Exit(0);
         }
 
@@ -157,19 +171,19 @@ namespace Wolf_and_Sheeps_LP2
         /// </summary>
         public void MainMenu()
         {
-            Console.WriteLine("Wolf and sheep's : The Game.");
+            Console.WriteLine("Wolf and Sheep: The Game.");
+            Console.WriteLine("Choose the first position for the wolf.");
             Console.WriteLine
-            ("When the x is blinking means that is wolf turn");
+            ("When 'x' is blinking, it means it's the wolf's turn");
             Console.WriteLine
-            ("type a position line and column to move the wolf.");
-            Console.WriteLine("Wolf can move forward and backwards");
+            ("Type a position line and column to move the wolf.");
+            Console.WriteLine("The Wolf can move diagonally forward and backwards");
             Console.WriteLine
-            ("When the o is blinking means that is sheep's turn");
+            ("When the o is blinking it means that it's sheep's turn");
             Console.Write
-            ("Choose the position of the sheep that you want to");
-            Console.Write("move then write another position for movement");
-            Console.WriteLine("The sheep can only move forward.");
-
+            ("While choosing the sheep's  position write the initial");
+            Console.Write("position followed by the desired position");
+            Console.WriteLine("The sheep can only move diagonally forward.\n");
         }
     }
 }

@@ -6,9 +6,9 @@ namespace Wolf_and_Sheeps_LP2
     public enum Pieces
     {
         /// <summary>
-        /// Wolf 'X'.
+        /// Empty ' '.
         /// </summary>
-        X = 'X',
+        Empty = ' ',
 
         /// <summary>
         /// Sheep 'O'.
@@ -16,8 +16,8 @@ namespace Wolf_and_Sheeps_LP2
         O = 'O',
 
         /// <summary>
-        /// Empty ' '.
+        /// Wolf 'X'.
         /// </summary>
-        Empty = ' '
+        X = 'X',
     }
 }
