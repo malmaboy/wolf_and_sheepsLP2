@@ -9,21 +9,28 @@ namespace Wolf_and_Sheeps_LP2
     {
         private const int Dimension = 8;
         public Pieces Turn { get; private set; }
+        public ConsoleColor TurnColor { get; private set; }
         private char[,] board;
         private int[] wolfPos;
 
+        private UserInterface userInterface;
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public Board()
         {
             Turn = Pieces.X;
+
+            TurnColor = ConsoleColor.White;
 
             board = new char[Dimension, Dimension];
 
             for (int i = 0; i < Dimension; i++)
                 for (int j = 0; j < Dimension; j++)
                     board[i, j] = (char)Pieces.Empty;
+
+            userInterface = new UserInterface();
         }
 
         /// <summary>
@@ -70,6 +77,7 @@ namespace Wolf_and_Sheeps_LP2
                     board[x, y] = (char)Pieces.X;
                     wolfPos = new int[2] { x, y };
                     Turn = Pieces.O;
+                    TurnColor = ConsoleColor.Cyan;
                 }
                 else
                     System.Console.WriteLine("There is a piece in that place.");
@@ -78,14 +86,30 @@ namespace Wolf_and_Sheeps_LP2
                 System.Console.WriteLine("Invalid position to move to.");
         }
 
-        public void MoveSheep()
+        public void MoveSheep(int x, int y, int i, int j)
         {
-
+            if (x >= 0 && x <= 7 && y >= 0 && y <= 7 &&
+            i >= 0 && i <= 7 && j >= 0 && j <= 7 &&
+            board[x, y] == (char)Pieces.O)
+            {
+                if (i - x == -1 && Math.Abs(j - y) == 1 &&
+                IsEmpty(i, j))
+                {
+                    board[x, y] = (char)Pieces.Empty;
+                    board[i, j] = (char)Pieces.O;
+                    Turn = Pieces.X;
+                    TurnColor = ConsoleColor.White;
+                }
+                else
+                    System.Console.WriteLine("The Sheep can't move there.");
+            }
+            else
+                System.Console.WriteLine("Invalid Input.");
         }
 
 
         /// <summary>
-        /// «7
+        /// 
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -99,9 +123,40 @@ namespace Wolf_and_Sheeps_LP2
         }
 
         /// <summary>
+        /// Checks constantly the game victory condition.
+        /// /// </summary>
+        public void GameCheck()
+        {
+            if (wolfPos[0] == 7)
+            {
+                userInterface.WolfVictory();
+
+            }
+            else
+            {
+                for (int i = -1; i <= 1; i += 2)
+                {
+                    for (int j = -1; j <= 1; j += 2)
+                    {
+                        if (wolfPos[0] + i >= 0 && wolfPos[0] + i <= 7 &&
+                        wolfPos[1] + j >= 0 && wolfPos[1] + j <= 7)
+                        {
+                            if (board[wolfPos[0] + i, wolfPos[1] + j] == (char)Pieces.Empty)
+                                return;
+                        }
+                    }
+                }
+                userInterface.SheepVictory();
+
+            }
+        }
+
+
+        /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public char[,] GetBoard() => board;
+        public char GetPos(int x, int y) => board[x,y];
     }
 }

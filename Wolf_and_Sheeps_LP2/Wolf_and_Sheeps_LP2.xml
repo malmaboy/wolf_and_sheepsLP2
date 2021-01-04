@@ -10,9 +10,9 @@
             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.#ctor">
-            <summary>
+             <summary>
             
-            </summary>
+             </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.InitialWolfPosition">
             <summary>
@@ -22,11 +22,16 @@
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.IsEmpty(System.Int32,System.Int32)">
             <summary>
-            «7
+            
             </summary>
             <param name="x"></param>
             <param name="y"></param>
             <returns></returns>
+        </member>
+        <member name="M:Wolf_and_Sheeps_LP2.Board.GameCheck">
+            <summary>
+            Checks constantly the game victory condition.
+            /// </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.GetBoard">
             <summary>
@@ -84,10 +89,12 @@
             Error Handling
             </summary>
         </member>
-        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.horizontalSymbol">
+        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.input">
             <summary>
             Variables
             </summary>
+        </member>
+        <member name="F:Wolf_and_Sheeps_LP2.UserInterface.horizontalSymbol">
             <summary>
             Horizontal Symbol for board creation
             </summary>
@@ -100,9 +107,9 @@
         <member name="M:Wolf_and_Sheeps_LP2.UserInterface.#ctor">
             <summary>
             User Interface constructor 
-            </summary>
+            /// </summary>
         </member>
-        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.DisplayBoard(System.Char[0:,0:])">
+        <member name="M:Wolf_and_Sheeps_LP2.UserInterface.DisplayBoard(Wolf_and_Sheeps_LP2.Board,System.ConsoleColor)">
             <summary>
             Displays the board 
             </summary>

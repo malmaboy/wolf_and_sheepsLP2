@@ -12,7 +12,6 @@ namespace Wolf_and_Sheeps_LP2
         private UserInterface userInterface;
         private Board gameBoard;
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -30,40 +29,65 @@ namespace Wolf_and_Sheeps_LP2
         {
             userInterface.WolfPositonPrint();
             gameBoard.InitialWolfPosition();
-            userInterface.DisplayBoard(gameBoard.GetBoard());
 
             Loop();
         }
 
         private void Loop()
         {
+            Pieces lastTurn;
+            int x, y, i, j;
+            x = 0;
+            y = 0;
+            i = 0;
+            j = 0;
+
+            Thread update = new Thread(() => userInterface.DisplayBoard(
+                gameBoard, gameBoard.TurnColor));
+
+            update.Start();
+
             while (true)
             {
-                string userIn = string.Empty;
-                Thread input = new Thread(() =>
+                lastTurn = gameBoard.Turn;
+                string userIn = userInterface.ReadInput();
+                /*Thread input = new Thread(() =>
                     { userIn = userInterface.ReadInput(); });
 
                 input.Start();
-                input.Join();
+                input.Join();*/
+
+                try
+                {
+                    x = int.Parse(userIn[0].ToString());
+                    y = int.Parse(userIn[1].ToString());
+                }
+                catch
+                {
+                    System.Console.WriteLine("Invalid Input.");
+                    continue;
+                }
 
                 if (gameBoard.Turn == Pieces.X)
                 {
-                    int x = Int32.Parse(userIn[0].ToString());
-                    int y = Int32.Parse(userIn[1].ToString());
-
                     gameBoard.MoveWolf(x, y);
                 }
                 else if (gameBoard.Turn == Pieces.O)
                 {
-                    int x = Int32.Parse(userIn[0].ToString());
-                    int y = Int32.Parse(userIn[1].ToString());
-                    int i = Int32.Parse(userIn[3].ToString());
-                    int j = Int32.Parse(userIn[4].ToString());
+                    try
+                    {
+                        i = int.Parse(userIn[3].ToString());
+                        j = int.Parse(userIn[4].ToString());
+                    }
+                    catch
+                    {
+                        System.Console.WriteLine("Invalid Input.");
+                        continue;
+                    }
 
-                    //gameBoard.MoveSheep(x, y, i, j);
+                    gameBoard.MoveSheep(x, y, i, j);
                 }
-
-                userInterface.DisplayBoard(gameBoard.GetBoard());
+                gameBoard.GameCheck();
             }
         }
     }
