@@ -62,7 +62,7 @@ namespace Wolf_and_Sheeps_LP2
                 }
                 catch
                 {
-                    System.Console.WriteLine("Invalid Input.");
+                    userInterface.InvalidInput();
                     continue;
                 }
 
@@ -79,7 +79,7 @@ namespace Wolf_and_Sheeps_LP2
                     }
                     catch
                     {
-                        System.Console.WriteLine("Invalid Input.");
+                        userInterface.InvalidInput();
                         continue;
                     }
 

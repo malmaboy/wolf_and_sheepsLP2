@@ -185,5 +185,13 @@ namespace Wolf_and_Sheeps_LP2
             Console.Write("position followed by the desired position");
             Console.WriteLine("The sheep can only move diagonally forward.\n");
         }
+
+        /// <summary>
+        /// Print invalid input.
+        /// </summary>
+        public void InvalidInput()
+        {
+            System.Console.WriteLine("Invalid Input");
+        }
     }
 }
