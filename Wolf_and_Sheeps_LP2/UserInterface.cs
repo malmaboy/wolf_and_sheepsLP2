@@ -57,10 +57,7 @@ namespace Wolf_and_Sheeps_LP2
                 Console.WriteLine("");
             }
         }
-        /*
-        public void ReadWolfPosition(string position){
-            position = Console.ReadLine();
-        }*/
+
 
         /// <summary>
         /// A Print that say to choose the wolf initial postion
@@ -77,6 +74,11 @@ namespace Wolf_and_Sheeps_LP2
         {
             System.Console.WriteLine("Invalid Position.");
             System.Console.WriteLine("Choose between 1, 3, 5, 7.\n");
+        }
+
+        public string ReadInput()
+        {
+            return Console.ReadLine();
         }
     }
 }

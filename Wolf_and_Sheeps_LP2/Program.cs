@@ -21,7 +21,6 @@ namespace Wolf_and_Sheeps_LP2
         private Program()
         {
             gameLoop = new GameLoop();
-
         }
 
         /// <summary>

@@ -4,11 +4,11 @@ namespace Wolf_and_Sheeps_LP2
 {
     /// <summary>
     /// 
-    /// /// </summary>
+    /// </summary>
     public class Board
     {
         private const int Dimension = 8;
-        private Pieces turn;
+        public Pieces Turn { get; private set; }
         private char[,] board;
         private int[] wolfPos;
 
@@ -17,9 +17,7 @@ namespace Wolf_and_Sheeps_LP2
         /// </summary>
         public Board()
         {
-            turn = Pieces.X;
-
-            wolfPos = new int[2] { 0, 10 };
+            Turn = Pieces.X;
 
             board = new char[Dimension, Dimension];
 
@@ -35,13 +33,14 @@ namespace Wolf_and_Sheeps_LP2
         public void InitialWolfPosition()
         {
 
-            while (wolfPos[1] == 10)
+            while (true)
             {
                 try
                 {
                     int x = Convert.ToInt32(Console.ReadLine().Trim());
                     board[0, x] = (char)Pieces.X;
-                    wolfPos[1] = x;
+                    wolfPos = new int[2] { 0, x };
+                    break;
                 }
                 catch
                 {
@@ -65,11 +64,12 @@ namespace Wolf_and_Sheeps_LP2
                 Math.Abs(x - wolfPos[0]) == 1 &&
                 Math.Abs(y - wolfPos[1]) == 1)
             {
-                if (board[x, y] == (char)Pieces.Empty)
+                if (IsEmpty(x, y))
                 {
                     board[wolfPos[0], wolfPos[1]] = (char)Pieces.Empty;
                     board[x, y] = (char)Pieces.X;
                     wolfPos = new int[2] { x, y };
+                    Turn = Pieces.O;
                 }
                 else
                     System.Console.WriteLine("There is a piece in that place.");
@@ -98,6 +98,10 @@ namespace Wolf_and_Sheeps_LP2
                 return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public char[,] GetBoard() => board;
     }
 }

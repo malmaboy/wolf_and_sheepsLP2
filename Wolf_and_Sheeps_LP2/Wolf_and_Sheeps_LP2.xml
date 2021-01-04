@@ -7,7 +7,7 @@
         <member name="T:Wolf_and_Sheeps_LP2.Board">
             <summary>
             
-            /// </summary>
+            </summary>
         </member>
         <member name="M:Wolf_and_Sheeps_LP2.Board.#ctor">
             <summary>
@@ -28,6 +28,12 @@
             <param name="y"></param>
             <returns></returns>
         </member>
+        <member name="M:Wolf_and_Sheeps_LP2.Board.GetBoard">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Wolf_and_Sheeps_LP2.GameLoop">
             <summary>
             GameLoop Class
@@ -41,7 +47,7 @@
         <member name="M:Wolf_and_Sheeps_LP2.GameLoop.Start">
             <summary>
             
-             </summary>
+              </summary>
         </member>
         <member name="T:Wolf_and_Sheeps_LP2.Pieces">
             <summary>
